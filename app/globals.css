@@ -1,0 +1,450 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
+
+    --radius: 0.75rem;
+
+    /* Green neon accent colors */
+    --neon-green: 142 71% 45%;
+    --neon-green-bright: 142 100% 50%;
+    --neon-green-dark: 142 71% 35%;
+    --neon-green-pale: 142 50% 75%;
+
+    /* Secondary accent colors (black and white with slight variations) */
+    --neon-black: 0 0% 0%;
+    --neon-white: 0 0% 100%;
+    --neon-gray-light: 0 0% 85%;
+    --neon-gray-dark: 0 0% 15%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Doodle-inspired and futuristic styling */
+
+/* Neon text effects */
+.neon-text {
+  text-shadow: 0 0 5px rgba(var(--neon-green), 0.7), 0 0 10px rgba(var(--neon-green), 0.5), 0 0 15px
+    rgba(var(--neon-green), 0.3);
+}
+
+.neon-text-green {
+  color: hsl(var(--neon-green));
+  text-shadow: 0 0 5px rgba(var(--neon-green), 0.7), 0 0 10px rgba(var(--neon-green), 0.5), 0 0 15px
+    rgba(var(--neon-green), 0.3);
+}
+
+.neon-text-white {
+  color: hsl(var(--neon-white));
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.neon-text-black {
+  color: hsl(var(--neon-black));
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Neon borders */
+.neon-border {
+  border: 1px solid transparent;
+  border-image: linear-gradient(
+      45deg,
+      hsl(var(--neon-green)),
+      hsl(var(--neon-green-bright)),
+      hsl(var(--neon-green-dark)),
+      hsl(var(--neon-green-pale))
+    )
+    1;
+  box-shadow: 0 0 5px rgba(var(--neon-green), 0.7), 0 0 10px rgba(var(--neon-green), 0.3);
+}
+
+.neon-border-green {
+  border: 1px solid hsl(var(--neon-green));
+  box-shadow: 0 0 5px rgba(var(--neon-green), 0.7), 0 0 10px rgba(var(--neon-green), 0.3);
+}
+
+.neon-border-white {
+  border: 1px solid hsl(var(--neon-white));
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.neon-border-black {
+  border: 1px solid hsl(var(--neon-black));
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Holographic card effects */
+.holographic-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.holographic-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(20, 230, 120, 0.05) 5%, transparent 60%);
+  pointer-events: none;
+  transition: transform 0.5s ease;
+  transform: translate(0, 0);
+}
+
+.holographic-card:hover::before {
+  transform: translate(25%, 25%);
+}
+
+.holographic-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--neon-green), 0.05) 10%,
+    rgba(var(--neon-green-bright), 0.05) 50%,
+    rgba(var(--neon-green-pale), 0.05) 90%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.holographic-card:hover::after {
+  opacity: 1;
+}
+
+/* 3D card effect */
+.perspective-card {
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.perspective-card:hover {
+  transform: rotateX(5deg) rotateY(5deg) scale(1.02);
+}
+
+/* Futuristic animations */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(var(--neon-green), 0.5), 0 0 10px rgba(var(--neon-green), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(var(--neon-green), 0.8), 0 0 20px rgba(var(--neon-green), 0.5), 0 0 30px
+      rgba(var(--neon-green), 0.3);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Futuristic UI Components */
+.futuristic-nav-item {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.futuristic-nav-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  height: 0;
+  width: 2px;
+  background: hsl(var(--neon-green));
+  transition: height 0.2s ease;
+  transform: translateY(-50%);
+}
+
+.futuristic-nav-item:hover::before {
+  height: 60%;
+}
+
+.futuristic-nav-item.active::before {
+  height: 80%;
+  background: hsl(var(--neon-green-bright));
+  box-shadow: 0 0 5px rgba(var(--neon-green), 0.7), 0 0 10px rgba(var(--neon-green), 0.3);
+}
+
+/* Glassmorphism effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+}
+
+/* Futuristic scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, hsl(var(--neon-green)), hsl(var(--neon-green-dark)));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, hsl(var(--neon-green-bright)), hsl(var(--neon-green)));
+}
+
+/* Futuristic loading effects */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s infinite;
+}
+
+/* Doodle-inspired background patterns */
+.doodle-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3Ccircle cx='13' cy='13' r='1'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.doodle-lines {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.doodle-dots {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Animated gradient background */
+.animated-gradient {
+  background: linear-gradient(-45deg, rgba(255, 255, 255, 1), rgba(240, 255, 240, 1), rgba(230, 255, 230, 1));
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Doodle animation */
+@keyframes doodle-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(-2deg);
+  }
+}
+
+.doodle-float {
+  animation: doodle-float 8s ease-in-out infinite;
+}
+
+/* Green accent colors for various UI elements */
+.green-accent {
+  color: hsl(var(--neon-green));
+}
+
+.green-bg {
+  background-color: hsl(var(--neon-green));
+}
+
+.green-border {
+  border-color: hsl(var(--neon-green));
+}
+
+/* Doodle-inspired elements */
+.doodle-border {
+  position: relative;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.doodle-border::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px dashed rgba(34, 197, 94, 0.3);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Sketch effect for cards */
+.sketch-card {
+  position: relative;
+  background: white;
+  border: 1px solid black;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+  transition: all 0.2s ease;
+}
+
+.sketch-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
+}
+
+.sketch-card::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  border: 1px dashed rgba(34, 197, 94, 0.2);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Compact post card styles */
+.post-card-compact .post-content {
+  max-height: 4.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.post-card-compact .post-image {
+  max-height: 150px;
+}
+
+/* Category pill styles */
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Hover lift effect with reduced intensity */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Subtle pulse animation for featured content */
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.subtle-pulse {
+  animation: subtle-pulse 3s infinite;
+}
+
+/* Improved scrollbar for feed */
+.feed-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.feed-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.feed-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.3);
+  border-radius: 10px;
+}
+
+.feed-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.5);
+}
